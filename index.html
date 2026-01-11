@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilawah Ramadhan - One Day One Juz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Floating particles animation */
+        .particle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .arabic {
+            font-size: 24px;
+            color: #764ba2;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: slideIn 1.2s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .title {
+            font-size: 42px;
+            color: #667eea;
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .hadith {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .flyer-container {
+            text-align: center;
+            margin: 40px 0;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .flyer-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .flyer-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            margin: 30px 0;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .content p {
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            color: #764ba2;
+            margin: 30px 0 15px 0;
+            font-weight: bold;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+            animation: slideIn 1s ease-out;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            animation: fadeInUp 1.3s ease-out;
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .info-box strong {
+            font-size: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 30px auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #764ba2;
+            font-size: 24px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .roses {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .title {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles -->
+    <script>
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(particle);
+        }
+    </script>
+
+    <div class="container">
+        <div class="header">
+            <div class="arabic">السلام عليكم ورحمة الله وبركاته</div>
+            <h1 class="title">Tilawah Ramadhan: One Day One Juz</h1>
+            <p class="subtitle">"Bacalah Al-Qur'an, karena sesungguhnya ia akan datang pada hari kiamat sebagai pemberi syafaat bagi pembacanya."</p>
+            <p class="hadith">(HR. Muslim)</p>
+        </div>
+
+        <div class="flyer-container">
+            <img src="flyertilawah.png" alt="Flyer Tilawah Ramadhan">
+        </div>
+
+        <div class="content">
+            <p>Jadikan Ramadhan Tahun ini lebih Baik! Mari bergabung dalam program Tilawah Bersama: <span class="highlight">One Day One Juz!</span></p>
+
+            <h2 class="section-title">Mengapa Harus Bergabung?</h2>
+            <p>Bukan sekadar membaca, akan ada <em>Tahsin Tilawah</em> (perbaikan bacaan) dan kita akan membangun kebiasaan (habit) positif dan menjaga istiqomah dalam mengkhatamkan 30 juz.</p>
+
+            <h2 class="section-title">📌 Jadwal Pelaksanaan</h2>
+            <div class="info-box">
+                <p><strong>Setiap hari selama bulan Ramadhan:</strong></p>
+                <p>🕰️ <strong>Waktu:</strong> Ba'da Shubuh s.d. Pukul 06.00 WIB</p>
+                <p>📱 <strong>Tempat:</strong> Daring Grup WhatsApp</p>
+                <p>🏷️ <strong>Target:</strong> 1 Juz per hari (Khatam di akhir Ramadhan)</p>
+            </div>
+
+            <h2 class="section-title">📝 Pendaftaran</h2>
+            <p>Segera daftarkan diri Anda</p>
+            <p><span class="highlight">Free</span></p>
+            <p><strong>Batas Pendaftaran:</strong> 13 Februari 2026 (25 Sya'ban 1447H)</p>
+        </div>
+
+        <div class="button-container">
+            <a href="https://api.whatsapp.com/send?phone=6287782650411&text=bismillah%20saya%20mau%20info%2C%20tilawah%20Ramadhan" class="cta-button" target="_blank">
+                Info Lebih Lanjut Klik Disini
+            </a>
+        </div>
+
+        <div class="footer">
+            <div class="arabic">والسلام عليكم ورحمة الله وبركاته</div>
+            <div class="roses">🌹🌹🌹🌹🌹</div>
+        </div>
+    </div>
+</body>
+</html>
